@@ -1,0 +1,13 @@
+%odds and evens
+%od_ev(init_list,col_list,nr_od,nr_ev,final_list)
+%(i,i,o,o,o)
+
+fun([],P,I,0,0,[P,I]).
+fun([H|T],P,I,Pa,Im,Rez):-
+    H mod 2 =:=0,
+    Pa2 is Pa+1,
+    fun(T,[H|P],I,Pa2,Im,Rez).
+fun([H|T],P,I,Pa,Im,Rez):-
+    H mod 2 =:= 1,
+    Im2 is Im+1,
+    fun(T,P,[H|I],Pa,Im2,Rez).

@@ -1,0 +1,19 @@
+%remove element N from a list
+
+rem([],_,[]).
+rem([H|T],H,Rez):-
+    rem(T,H,Rez).
+rem([H|T],E,[H|Rez]):-
+    E\=H,
+    rem(T,E,Rez).
+
+%remove element on position N in a list
+
+rem2([],_,_,[]).
+rem2([H|T],I,I,T).
+rem2([H|T],I,N,[H|Rez]):-
+    I < N,
+    I1 is I+1,
+    rem2(T,I1,N,Rez).
+
+

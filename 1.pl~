@@ -1,0 +1,58 @@
+% verifies if an atom exists in a list
+apare([H|_],H):-!.
+apare([H|T],E):-
+    H\=E,
+    !,
+    apare(T,E).
+
+%diference bettween 2 sets
+
+%with colecting variable
+
+dif([],_,Col,Col).
+
+dif([H|T],P,Col,Rez):-
+    apare(P,H),
+    dif(T,P,Col,Rez).
+
+dif([H|T],P,[H|Col],Rez):-
+    not(apare(P,H)),
+    dif(T,P,Col,Rez).
+
+%without collecting variable
+
+dif2([],_,[]).
+dif2([H|T],P,Rez):-
+    apare(P,H),
+    !,
+    dif2(T,P,Rez).
+dif2([H|T],P,[H|Rez]):-
+    not(apare(P,H)),
+    !,
+    dif2(T,P,Rez).
+
+%add after every even atom number 0
+
+ad([],_,[]).
+ad([H|T],E,Rez):-
+    H mod 2 =:= 0,
+    ad(T,E,Rez1),
+    Rez = [H,E|Rez1].
+
+ad([H|T],E,[H|Rez]):-
+    H mod 2 =:=1,
+    ad(T,E,Rez).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
